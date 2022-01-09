@@ -6,7 +6,7 @@ bakpath=<FILESYSTEMPATH>
 prefix=<PREFIX>
 deleteolderthandays=14
 
-mysqldump -u $dbuser --password=$dbpwd --all-databases | gzip > $bakpath/$prefix-$(date +%Y-%m-%d_%H-%M).sql.gz
+mysqldump -u $dbuser --password=$dbpwd --all-databases | xz > $bakpath/$prefix-$(date +%Y-%m-%d_%H-%M).sql.xz
 
 find $bakpath/ -name $prefix*.sql.gz -type f -mtime +$deleteolderthandays -delete
 
